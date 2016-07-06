@@ -4,6 +4,7 @@ import sha1 from "./sha1"
 
 export {
   getChartId,
+  parseChartId,
   parseQueryString,
   camelToHyphen,
   stringToNumber,
@@ -15,6 +16,17 @@ export {
 
 function getChartId(params: t_CHART_PARAM): string {
   return sha1(JSON.stringify(params), /* short */ true)
+}
+
+/*
+* Returns the Chart ID from a given URL.
+*/
+function parseChartId(url:string): string {
+  const match = (/\/(?:c|embed)\/(\w+)(?:|\?.*)?/).exec(url)
+  if (match){
+    return match[1]
+  }
+  return null
 }
 
 function log10Floor(val: number): number {
