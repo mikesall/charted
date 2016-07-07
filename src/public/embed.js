@@ -46,17 +46,17 @@ var CHARTED
       try {
         data = JSON.parse(ev.data)
       } catch (e) {
-        return false
+        return
       }
 
       if (data.context !== 'iframe.resize') {
-        return false
+        return
       }
 
       var iframe = document.querySelector('#charted-' + data.chartId)
 
       if (!iframe) {
-        return false
+        return
       }
 
       iframe.style.transition = 'height 200ms'

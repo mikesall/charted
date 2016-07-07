@@ -23,10 +23,7 @@ function getChartId(params: t_CHART_PARAM): string {
 */
 function parseChartId(url:string): string {
   const match = (/\/(?:c|embed)\/(\w+)(?:|\?.*)?/).exec(url)
-  if (match){
-    return match[1]
-  }
-  return null
+  return match ? match[1] : null
 }
 
 function log10Floor(val: number): number {
